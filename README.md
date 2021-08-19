@@ -8,7 +8,8 @@ Direct download links (as found on the official website):
 - bzImage: https://mega.nz/file/EJhBzTIQ#rpbOcpIpulojUxRUiZjLQ7RqS6tlNc6JmcCrgSxyG-g
 - psxitarch.tar.xz: https://www.psxita.it/distro/psxitarch.tar.xz
 
-Note: Some PS4 models do not have working Wi-Fi when using this Linux kernel. A kernel that has drivers for Wi-Fi dongles built-in is available here: https://www.psxita.it/forum/psxitarch-linux-una-distro-per-ps4-t6120-40.html#p45702  
+Note: Some PS4 models do not have working Wi-Fi when using this Linux kernel. A kernel that has drivers for Wi-Fi dongles built-in is available here: https://www.psxita.it/forum/psxitarch-linux-una-distro-per-ps4-t6120-40.html#p45702
+
 Direct download link:
 - bzImage.bin: https://www.mediafire.com/file/amiftcy4lof71ep/bzImage.bin/file
 
