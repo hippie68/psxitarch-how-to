@@ -8,7 +8,7 @@ Direct download links (as found on the official website):
 - bzImage: https://mega.nz/file/EJhBzTIQ#rpbOcpIpulojUxRUiZjLQ7RqS6tlNc6JmcCrgSxyG-g
 - psxitarch.tar.xz: https://www.psxita.it/distro/psxitarch.tar.xz
 
-Note: Some PS4 models do not have working Wi-Fi when using this Linux kernel. A kernel that has drivers for WiFi dongles built-in is available here: https://www.psxita.it/forum/psxitarch-linux-una-distro-per-ps4-t6120-40.html#p45702
+Note: Some PS4 models do not have working Wi-Fi when using this Linux kernel. A kernel that has drivers for Wi-Fi dongles built-in is available here: https://www.psxita.it/forum/psxitarch-linux-una-distro-per-ps4-t6120-40.html#p45702  
 Direct download link:
 - bzImage.bin: https://www.mediafire.com/file/amiftcy4lof71ep/bzImage.bin/file
 
@@ -48,6 +48,8 @@ On the PS4, a new network symbol that looks like an Ethernet plug should replace
 
 ## 6. Update the distro
 The distro we have installed right now was released in January 2019. A downside about an Arch Linux installation (which psxitarch is based on) is that the less often you update it, the more difficult it becomes. Psxita has made available update instructions in March 2021 (https://twitter.com/Ps3ita_Team/status/1375799242913157120), however once again it has been a while since then, and those instructions are no longer sufficient. It is still possible to update though, and that is what we will do next.
+
+Click on the Mushroom icon and select "Terminal".
 
 Some currently installed packages would prevent updating, so we will delete them (in the case of jwm-git only temporarily):
 
