@@ -1,8 +1,17 @@
 # How to install psxitarch, enable Wi-Fi, and update the distro
 
-**Update:** I did all the steps below with a fresh psxitarch installation to fully update it.  
+**Update:** I did all the steps below with a clean psxitarch installation to fully update it.
+
 Download here: [psxitarch.tar.xz (2021-08-19)](https://e.pcloud.link/publink/show?code=XZupl0ZoN4NIEGNai85UjOGwyT95SzXRJbk)  
-You can use this instead of the original psxitarch.tar.xz file, to skip step 6 and to start with an updated distro.
+
+Checksums:
+- MD5: 27c10f723e9a7aac7143157988cd700a
+- SHA1: 2d12eea0e60043f25e64829cd312358d53270754
+- SHA256: 2a48efae95b18eef1350bdda838ab6000d857055b2981ea893ef06b3d22394b4
+
+You can use this file instead of the original psxitarch.tar.xz, to skip step 6 and to start with an updated distro.
+
+___
 
 ## 1. Get the required files
 You need 3 files: An initramfs file, a Linux kernel in form of a "bzImage" file and "psxitarch.tar.xz", which contains the psxitarch distro files. This is the official download page (in Italian language): https://www.psxita.it/psxitarch-linux-v2/
