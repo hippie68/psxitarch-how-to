@@ -82,7 +82,11 @@ Next, we need to specify a new key server by entering
 
 and replacing the old "hkp://pool.sks-keyservers.net" entry, which is now deprecated, with a reliable one, e.g. "hkp://keyserver.ubuntu.com". You can save the file by pressing CTRL-X and confirming with "y".
 
-We also need to change pacman's repo. Open the file /etc/pacman.conf and change the very last line,
+We also need to change pacman's repo. Open the file /etc/pacman.conf by entering
+
+    sudo nano /etc/pacman.conf
+    
+and change the very last line,
 
     Server = https://psxita.it/repo
 
@@ -90,6 +94,8 @@ to
 
     Server = https://psxita.it/repo-testing
     
+Save and close the file like before, by pressing CTRL-X and confirming with "y".
+
 Furthermore, the planned distro update would fail if we don't update the current keyring first. Enter
 
     sudo pacman -Sy archlinux-keyring
