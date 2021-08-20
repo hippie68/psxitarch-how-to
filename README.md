@@ -51,7 +51,7 @@ to boot into the now-installed psxitarch.
 If you don't have a US keyboard: Once you see the desktop, set your keyboard layout by clicking the Mushroom in the upper left corner, then "Language" - "Keyboard Layout".
 
 ## 5. Connect to the Internet
-Click on the Wi-Fi symbol in the upper right corner. Either you're lucky and you own one of the PS4's whose network devices are supported (then connect to your network and proceed to step 6 right away), or you will see the text "No network devices available". Which means you need the alternative kernel mentioned in step 2. With that kernel, you should be able to use some (not all) USB Wi-Fi dongles out-of-the-box. I found a list of Wi-Fi devices that are supposed to have in-built Linux kernel support here: https://github.com/morrownr/USB-WiFi (buy at your own risk!)
+Click on the Wi-Fi symbol in the upper right corner. Either you're lucky and you own one of the PS4s whose network devices are supported (then connect to your network and proceed to step 6 right away), or you will see the text "No network devices available". Which means you need the alternative kernel mentioned in step 2. With that kernel, you should be able to use some (not all) USB Wi-Fi dongles out-of-the-box. I found a list of Wi-Fi devices that are supposed to have in-built Linux kernel support here: https://github.com/morrownr/USB-WiFi (buy at your own risk!)
 
 If you don't have any Wi-Fi dongles that are supported, you can use a smartphone's USB tethering mode by connecting the smartphone via USB (the cable you use must support data transfer - not all do).
 
@@ -137,3 +137,33 @@ ___
 That concludes this How-To. I want to make sure it stays up-to-date. If you find any mistakes or want to add information, please create an issue at https://github.com/hippie68/psxitarch-how-to/issues.
 
 Thanks for reading!
+
+___
+
+**Bonus: Fix the audio lag**
+
+psxitarch by default has horrendous audio lag. It seems the default audio latency is set to 100 ms. Not good for gaming. To fix this, enter
+
+    sudo nano /etc/pulse/daemon.conf
+
+and change the lines
+
+    ; default-fragments=4
+    ; default-fragment-size-msec=25
+
+to
+
+    default-fragments=4
+    default-fragment-size-msec=10
+
+It is important to remove the semicolons - otherwise the changes would have no effect. Save by pressing CTRL-X and confirm with "y".
+
+To apply the changes to the currently running psxitarch session, enter
+
+    pulseaudio -k
+
+to "kill" the pulseaudio daemon, which should then restart automatically.
+
+You might want to experiment a little with the values, but if you set them too low, you will start to hear audio crackle. The total latency is calculated by (default-fragments * default-fragment-size-msec) in ms.
+
+If you use RetroArch, open it, go to "Audio - Output - Audio Latency (ms)" and change the default setting from 64 to 0. Which indirectly means it will use whatever you have set in daemon.conf, as that value is now higher once again. Make sure the selected audio driver is still "pulse", as it is by default.
