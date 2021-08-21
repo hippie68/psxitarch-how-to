@@ -2,7 +2,7 @@
 
 **Update:** I did all the steps below with a clean psxitarch installation to fully update it.
 
-Download here: [psxitarch.tar.xz (2021-08-19)](https://e.pcloud.link/publink/show?code=XZupl0ZoN4NIEGNai85UjOGwyT95SzXRJbk)  
+Download here: https://github.com/hippie68/psxitarch-how-to/releases  
 
 Checksums:
 - MD5: 27c10f723e9a7aac7143157988cd700a
@@ -148,13 +148,13 @@ psxitarch by default has horrendous audio lag. It seems the default audio latenc
 
 and change the lines
 
-    ; default-fragments=4
-    ; default-fragment-size-msec=25
+    ; default-fragments = 4
+    ; default-fragment-size-msec = 25
 
 to
 
-    default-fragments=4
-    default-fragment-size-msec=10
+    default-fragments = 4
+    default-fragment-size-msec = 10
 
 It is important to remove the semicolons - otherwise the changes would have no effect. Save by pressing CTRL-X and confirm with "y".
 
