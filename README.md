@@ -4,29 +4,43 @@
 
 Download here: https://github.com/hippie68/psxitarch-how-to/releases  
 
-Checksums:
-- MD5: 27c10f723e9a7aac7143157988cd700a
-- SHA1: 2d12eea0e60043f25e64829cd312358d53270754
-- SHA256: 2a48efae95b18eef1350bdda838ab6000d857055b2981ea893ef06b3d22394b4
-
-You can use this file instead of the original psxitarch.tar.xz, to skip step 6 and to start with an updated distro.
+You can use this file instead of the original psxitarch.tar.xz, to skip step 6 and to start with an updated distro.  
+The release section also includes an updated initramfs.gpio.gz file, which now properly aligns partitions (see update in step 1 for more information).
 
 ___
 
 ## 1. Get the required files
-You need 3 files: An initramfs file, a Linux kernel in form of a "bzImage" file and "psxitarch.tar.xz", which contains the psxitarch distro files. This is the official download page (in Italian language): https://www.psxita.it/psxitarch-linux-v2/
+You need 3 files: An initramfs file, a Linux kernel in form of a "bzImage" file and "psxitarch.tar.xz", which contains the psxitarch distro files. This is the official website (in Italian language): https://www.psxita.it/psxitarch-linux-v2/
 
 Direct download links (as found on the official website):
-- initramfs.cpio.gz: https://mega.nz/#!IUBDiQKY!7WK2zFkUQbqJ02b9LTSAGug3NiL_8XPhprLcqVcfXxQ
-- bzImage: https://mega.nz/file/EJhBzTIQ#rpbOcpIpulojUxRUiZjLQ7RqS6tlNc6JmcCrgSxyG-g
-- psxitarch.tar.xz: https://www.psxita.it/distro/psxitarch.tar.xz
+- [initramfs.cpio.gz](https://mega.nz/#!IUBDiQKY!7WK2zFkUQbqJ02b9LTSAGug3NiL_8XPhprLcqVcfXxQ) (not recommended anymore, see update below)
+- [bzImage](https://mega.nz/file/EJhBzTIQ#rpbOcpIpulojUxRUiZjLQ7RqS6tlNc6JmcCrgSxyG-g)
+- [psxitarch.tar.xz](https://www.psxita.it/distro/psxitarch.tar.xz)
 
 **Note:** Some PS4 models do not have working Wi-Fi when using this Linux kernel. A kernel that has drivers for Wi-Fi dongles built-in is available here: https://www.psxita.it/forum/psxitarch-linux-una-distro-per-ps4-t6120-40.html#p45702
 
 Direct download link:
-- bzImage.bin: https://www.mediafire.com/file/amiftcy4lof71ep/bzImage.bin/file
+- [bzImage.bin](https://www.mediafire.com/file/amiftcy4lof71ep/bzImage.bin/file)
 
 If you want/need to use this kernel instead of the default one, make sure to rename "bzImage.bin" to "bzImage".
+
+**Update:** I noticed psxita's original initramfs.cpio.gz does not align partitions during the install phase (4.). This will decrease your USB storage device's write performance and, in the case of SSDs, USB sticks, memory cards, and other flash storage devices, over time even its lifespan. I have modified the file to properly align partitions - you can download it in the [release section](https://github.com/hippie68/psxitarch-how-to/releases).  
+If you are already using psxitarch: Replacing the file on an existing psxitarch installation will not re-align the partitions. It only works during the install phase. You would have to manually modify the partitions from within another OS or install psxitarch again.
+
+You can check if your partitions are aligned from within psxitarch by opening a terminal and typing
+
+    sudo parted /dev/sda
+
+and then
+
+    align-check
+    opt
+    1
+    align-check
+    opt
+    2
+
+Exit parted by entering "q".
 
 ## 2. Set up a USB storage device
 The device can be a USB stick, an HDD/SDD connected to a USB adapter, an SD card inside a USB SD card adapter, or whatever else that qualifies as "USB storage device". USB 3.0+ is recommended.  
@@ -34,15 +48,17 @@ Create a single partition on the USB storage device that uses the whole space an
 Copy the 3 previously downloaded files "initramfs.cpio.gz", "bzImage", and "psxitarch.tar.xz" to the FAT32 partition.
 
 ## 3. Boot Linux from a PS4
-Plug the USB storage device into USB slot 0, which is the leftmost one up front, and visit a jailbreak website (e.g. for PS4 firmware 7.02 up to 7.55 https://hippie68.github.io). Select the payload "Linux (1 GB)", as it is important not to select "Linux (3 GB)" for the first-time setup, and wait for the jailbreak to succeed. When it does, it will boot Linux from USB.  
+Plug the USB storage device into USB slot 0, which is the leftmost one up front, and visit a jailbreak website (e.g. for PS4 firmware 7.02 up to 7.55 https://hippie68.github.io). Select the payload "Linux (1 GB)", as it is important not to select "Linux (3 GB)" for the first-time setup(*), and wait for the jailbreak to succeed. When it does, it will boot Linux from USB.  
 You have to attach a USB keyboard (+ mouse) to enter commands. Use a USB hub if your PS4 doesn't have enough USB slots.
+
+(*) After you have completed the installation (step 4), for future Linux sessions you can use the 3 GB payload, too.
 
 ## 4. Install psxitarch
 After the boot process is complete, you will see a command line prompt. Enter the following command:
 
     exec install-psxitarch.sh
 
-This script may run for half an hour or longer, depending on your USB device's speed. When the script has finished and you're still on the command line (which can sometimes happen), type
+This script may run for just a few minutes, half an hour or even longer, depending on your USB device's speed. When the script has finished and you're still on the command line (which can sometimes happen), type
 
     resume-boot
 
